@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Layout from './components/Layout';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Pokemons from './screens/Pokemons';
+import Pokemon from './screens/Pokemon';
+import About from './screens/About';
+import Contact from './screens/Contact';
+import Blogs from './screens/Blogs';
+import Blog from './screens/Blog';
+import { Container } from '@mui/material';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Container maxWidth='lg'>
+          <Routes>
+            <Route path='/' element={<Pokemons />} />
+            <Route path='/:id' element={<Pokemon />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/blogs' element={<Blogs />} />
+            <Route path='/blogs/:id' element={<Blog />} />
+          </Routes>
+        </Container>
+      </Layout>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
